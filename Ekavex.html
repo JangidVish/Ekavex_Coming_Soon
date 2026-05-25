@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ekavex — Coming Soon</title>
+  <meta name="description" content="Ekavex is launching soon with smart digital solutions, modern design, software development, cloud, DevOps and branding services." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fff7ef;
+      --paper: rgba(255, 255, 255, 0.74);
+      --paper-strong: rgba(255, 255, 255, 0.92);
+      --text: #111111;
+      --muted: #6d6259;
+      --orange: #ec5b05;
+      --orange-dark: #cf4d00;
+      --cream: #ffe6cf;
+      --line: rgba(236, 91, 5, 0.18);
+      --shadow: 0 28px 80px rgba(106, 61, 23, 0.13);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 18% 14%, rgba(236, 91, 5, 0.16), transparent 28%),
+        radial-gradient(circle at 82% 22%, rgba(236, 91, 5, 0.11), transparent 30%),
+        linear-gradient(135deg, #fffdf9 0%, var(--bg) 48%, #fff0df 100%);
+      overflow-x: hidden;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 34px;
+      isolation: isolate;
+    }
+
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      opacity: 0.42;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
+    }
+
+    .tech-lines {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+      opacity: 0.5;
+    }
+
+    .tech-lines::before,
+    .tech-lines::after {
+      content: "";
+      position: absolute;
+      width: 660px;
+      height: 660px;
+      border: 1px solid rgba(236, 91, 5, 0.17);
+      transform: rotate(45deg);
+    }
+
+    .tech-lines::before {
+      top: -220px;
+      right: -180px;
+    }
+
+    .tech-lines::after {
+      bottom: -260px;
+      left: -220px;
+    }
+
+    .orb {
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: var(--orange);
+      box-shadow: 0 0 26px rgba(236, 91, 5, 0.55);
+      opacity: 0.62;
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .orb:nth-child(1) { top: 17%; left: 16%; animation-delay: 0s; }
+    .orb:nth-child(2) { top: 26%; right: 22%; animation-delay: 1.4s; }
+    .orb:nth-child(3) { bottom: 22%; left: 26%; animation-delay: 2.2s; }
+    .orb:nth-child(4) { bottom: 31%; right: 13%; animation-delay: 3s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-18px) scale(1.08); }
+    }
+
+    .shell {
+      width: min(1120px, 100%);
+      min-height: 680px;
+      border: 1px solid rgba(236, 91, 5, 0.16);
+      border-radius: 38px;
+      padding: 30px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,240,224,0.74));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.9) 42%, transparent 64%);
+      transform: translateX(-80%);
+      animation: shine 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shine {
+      0%, 34% { transform: translateX(-90%); }
+      58%, 100% { transform: translateX(90%); }
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-mark {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 14px 32px rgba(236, 91, 5, 0.13);
+    }
+
+    .dots {
+      display: grid;
+      grid-template-columns: repeat(3, 7px);
+      gap: 5px;
+    }
+
+    .dots span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .brand h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      letter-spacing: -0.05em;
+      font-weight: 800;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(236, 91, 5, 0.16);
+      background: rgba(255, 255, 255, 0.58);
+      border-radius: 999px;
+      padding: 12px 18px;
+      color: var(--orange-dark);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--orange);
+      box-shadow: 0 0 0 rgba(236, 91, 5, 0.45);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(236, 91, 5, 0.45); }
+      70% { box-shadow: 0 0 0 12px rgba(236, 91, 5, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(236, 91, 5, 0); }
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 46px;
+      align-items: center;
+      padding: 80px 36px 38px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.62);
+      color: var(--orange-dark);
+      padding: 12px 18px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      border: 1px solid rgba(236, 91, 5, 0.12);
+    }
+
+    .hero h2 {
+      font-size: clamp(3rem, 7vw, 6.7rem);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+      font-weight: 800;
+      margin-bottom: 26px;
+    }
+
+    .hero h2 span {
+      color: var(--orange);
+      display: block;
+    }
+
+    .hero p {
+      max-width: 610px;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.45vw, 1.18rem);
+      line-height: 1.8;
+      margin-bottom: 34px;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 0;
+      outline: 0;
+      min-height: 58px;
+      border-radius: 16px;
+      padding: 0 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 1rem;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      box-shadow: 0 18px 34px rgba(236, 91, 5, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background: var(--orange-dark);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.68);
+      color: var(--text);
+      border: 1px solid rgba(17, 17, 17, 0.08);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      border-color: rgba(236, 91, 5, 0.25);
+    }
+
+    .panel {
+      border-radius: 34px;
+      background: var(--paper);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 24px 60px rgba(106, 61, 23, 0.12);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::after {
+      content: "";
+      position: absolute;
+      inset: auto -70px -120px auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(236, 91, 5, 0.11);
+    }
+
+    .launch-card {
+      background: var(--paper-strong);
+      border-radius: 28px;
+      padding: 28px;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(236, 91, 5, 0.12);
+    }
+
+    .launch-card h3 {
+      font-size: 1.55rem;
+      letter-spacing: -0.045em;
+      margin-bottom: 14px;
+    }
+
+    .launch-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .services {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .service {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 247, 239, 0.84);
+      border: 1px solid rgba(236, 91, 5, 0.1);
+      font-weight: 700;
+    }
+
+    .icon {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--orange);
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      background: #fff;
+      padding: 8px;
+      border-radius: 18px;
+      border: 1px solid rgba(17, 17, 17, 0.06);
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      outline: 0;
+      padding: 0 12px;
+      font: inherit;
+      color: var(--text);
+      background: transparent;
+    }
+
+    input::placeholder {
+      color: #a99d93;
+    }
+
+    form button {
+      border: 0;
+      border-radius: 13px;
+      background: var(--orange);
+      color: #fff;
+      padding: 14px 18px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .mini-note {
+      margin-top: 14px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 36px 8px;
+      color: var(--muted);
+      position: relative;
+      z-index: 2;
+      font-size: 0.95rem;
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+    }
+
+    .socials a {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(17,17,17,0.06);
+      font-weight: 800;
+      transition: 0.25s ease;
+    }
+
+    .socials a:hover {
+      color: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 880px) {
+      .page {
+        padding: 16px;
+      }
+
+      .shell {
+        min-height: auto;
+        border-radius: 28px;
+        padding: 20px;
+      }
+
+      header,
+      footer {
+        padding: 0;
+      }
+
+      main {
+        grid-template-columns: 1fr;
+        padding: 58px 0 28px;
+        gap: 34px;
+      }
+
+      .status-pill {
+        display: none;
+      }
+
+      .hero h2 {
+        font-size: clamp(3.1rem, 16vw, 5.5rem);
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brand h1 {
+        font-size: 1.55rem;
+      }
+
+      .logo-mark {
+        width: 52px;
+        height: 52px;
+      }
+
+      .actions,
+      form {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn,
+      form button {
+        width: 100%;
+      }
+
+      input {
+        min-height: 46px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="grid-bg"></div>
+    <div class="tech-lines">
+      <span class="orb"></span>
+      <span class="orb"></span>
+      <span class="orb"></span>
+      <span class="orb"></span>
+    </div>
+
+    <section class="shell" aria-label="Ekavex coming soon page">
+      <header>
+        <div class="brand" aria-label="Ekavex logo">
+          <div class="logo-mark">
+            <div class="dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+              <span></span><span></span><span></span>
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <h1>Ekavex</h1>
+        </div>
+
+        <div class="status-pill">
+          <span class="pulse"></span>
+          Building Something Powerful
+        </div>
+      </header>
+
+      <main>
+        <div class="hero">
+          <div class="eyebrow">Tech Agency • Launching Soon</div>
+          <h2>Coming <span>Soon</span></h2>
+          <p>
+            We are crafting a smarter digital experience for businesses ready to grow, scale and lead with modern software, cloud, automation, UI/UX and branding solutions.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="mailto:hello@Ekavex.com">Get in touch →</a>
+            <a class="btn btn-secondary" href="#notify">Notify me</a>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <div class="launch-card">
+            <h3>Our new website is almost ready.</h3>
+            <p>Until then, connect with us and be the first to know when Ekavex goes live.</p>
+
+            <div class="services">
+              <div class="service"><span class="icon">✦</span> Custom Software Development</div>
+              <div class="service"><span class="icon">□</span> Automation Solutions</div>
+              <div class="service"><span class="icon">◎</span> UI/UX Design & Branding</div>
+            </div>
+
+            <form id="notify" action="mailto:hello@Ekavex.com" method="post" enctype="text/plain">
+              <input type="email" name="email" placeholder="Enter your email" required />
+              <button type="submit">Notify</button>
+            </form>
+            <div class="mini-note">Innovative Technology. Reliable Solutions.</div>
+          </div>
+        </aside>
+      </main>
+
+      <footer>
+        <p>© 2026 Ekavex. All rights reserved.</p>
+        <div class="socials" aria-label="Social links">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="X">x</a>
+        </div>
+      </footer>
+    </section>
+  </div>
+</body>
+</html>
